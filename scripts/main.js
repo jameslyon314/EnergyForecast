@@ -1,4 +1,5 @@
 import runGeneration from './generators.js';
+import industry from './industry.js';
 
 function init() {
     window.fullInitialization = fullInitialization;
@@ -7,12 +8,13 @@ function init() {
 init();
 
 function fullInitialization() {
-    let generated = runGeneration();
-    console.log(generated);
+    const generated = runGeneration();
+    console.log('generated:', generated);
     // const gs1 = JSON.stringify(generation);
     // console.log(generation);
     
-    // industry();
+    const ind = industry();
+    console.log('industry:', ind);
      /* rescomm();
      * transportation(); 
      * genCO2();

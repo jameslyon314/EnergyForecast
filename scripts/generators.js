@@ -10,13 +10,13 @@ export default function runGeneration() {
 	generated[0][i] = 2018+i;
     }
 
-    const CoalResource = new Resource('coal', 1146, 'genCoalf_var', 'genCoalm_var', 6.4, 'genCoalCutoff_var', 'genCoalYear_var');
+    const CoalResource = new Resource('Coal', 1146, 'genCoalf_var', 'genCoalm_var', 6.4, 'genCoalCutoff_var', 'genCoalYear_var');
     CoalResource.generate(generated, 1);
 
-    const GasResource = new Resource('gas', 1064, 'genGasf_var', 'genGasm_var', 6.4, 'genGasCutoff_var', 'genGasYear_var');
+    const GasResource = new Resource('Gas', 1064, 'genGasf_var', 'genGasm_var', 6.4, 'genGasCutoff_var', 'genGasYear_var');
     GasResource.generate(generated, 2);
 
-    const PetResource = new Resource('pet', 25, 'genPetf_var', 'genPetm_var', 6.4, 'genPetCutoff_var', 'genPetYear_var');
+    const PetResource = new Resource('Pet', 25, 'genPetf_var', 'genPetm_var', 6.4, 'genPetCutoff_var', 'genPetYear_var');
     PetResource.generate(generated, 3);
     
     const BioResource = new Resource('Bio', 56, 'genBiof_var', 'genBiom_var', 6.4, 'genBioCutoff_var', 'genBioYear_var');
