@@ -7,7 +7,7 @@ export default class Resource {
 	this.f = parseInt(document.getElementById(f_id).value);
 	this.m = parseInt(document.getElementById(m_id).value);
 	this.tau = tau;
-	this.cutoff = parseInt(document.getElementById(cutoff_id).value);
+	this.cutoff = document.getElementById(cutoff_id).checked;
 	this.year = parseInt(document.getElementById(year_id).value);
     }
 

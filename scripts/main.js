@@ -9,8 +9,10 @@ function init() {
     window.industry = industry;
     window.rescomm = rescomm;
     window.transportation = transportation;
+    
     fullInitialization();
 }
+
 init();
 
 function fullInitialization() {
@@ -31,4 +33,3 @@ function fullInitialization() {
      * transCO2(); */
      createCharts(generated);
 }
-
