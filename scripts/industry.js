@@ -38,10 +38,10 @@ export default function industry() {
     WindResource.generate(industry, 9);
 
     const GridResource = new Resource('Grid', 476, 'indGridf_var', 'indGridm_var', 6.4, 'indGridCutoff_var', 'indGridYear_var');
-    GridResource.generate(industry, 9);
+    GridResource.generate(industry, 10);
 
     const OtherResource = new Resource('Other', 0, 'indOtherf_var', 'indOtherm_var', 6.4, 'indOtherCutoff_var', 'indOtherYear_var');
-    OtherResource.generate(industry, 10);
+    OtherResource.generate(industry, 11);
 
     const sourceInd = parseInt(document.getElementById("sourceInd_var").value);
     const yearInd = parseInt(document.getElementById("yearInd_var").value - 2018);
