@@ -40,10 +40,4 @@ export default function rescomm() {
     const OtherResource = new Resource('Other', 0, 'resOtherf_var', 'resOtherm_var', 6.4, 'resOtherCutoff_var', 'resOtherYear_var');
     OtherResource.generate(rescomm, 10);
     
-    const sourceRescomm = parseInt(document.getElementById("sourceRescomm_var").value);
-    const yearRescomm = parseInt(document.getElementById("yearRescomm_var").value - 2018);
-    const rescommValue = rescomm[sourceRescomm][yearRescomm];
-    document.getElementById("outputRescomm").innerHTML = "Energy (GWe): " + rescommValue;
-
-   return rescomm; 
 }
