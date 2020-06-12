@@ -43,10 +43,4 @@ export default function industry() {
     const OtherResource = new Resource('Other', 0, 'indOtherf_var', 'indOtherm_var', 6.4, 'indOtherCutoff_var', 'indOtherYear_var');
     OtherResource.generate(industry, 11);
 
-    const sourceInd = parseInt(document.getElementById("sourceInd_var").value);
-    const yearInd = parseInt(document.getElementById("yearInd_var").value - 2018);
-    const indValue = industry[sourceInd][yearInd];
-    document.getElementById("outputInd").innerHTML = "Energy (GWe): " + indValue;
-
-    return industry;
 }
