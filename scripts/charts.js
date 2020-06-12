@@ -1,5 +1,7 @@
-export default function createCharts(generation) {   
+export default function createCharts(generation, rescomm) {   
     document.getElementById("genArea").innerHTML = "";
+    document.getElementById("resArea").innerHTML = ""
+    
     
     let genContent = new Array(0);
     for (let i= 0; i<33; i++){
