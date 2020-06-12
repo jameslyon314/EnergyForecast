@@ -31,10 +31,4 @@ export default function transportation() {
     const OtherResource = new Resource('Other', 0, 'transOtherf_var', 'transOtherm_var', 6.4, 'transOtherCutoff_var', 'transOtherYear_var');
     OtherResource.generate(transportation, 7);
     
-    const sourceTrans = parseInt(document.getElementById("sourceTrans_var").value);
-    const yearTrans = parseInt(document.getElementById("yearTrans_var").value - 2018);	
-    const transValue = transportation[sourceTrans][yearTrans];
-    document.getElementById("outputTrans").innerHTML = "Energy (GWe): " + transValue;
-
-    return transportation;
 }
