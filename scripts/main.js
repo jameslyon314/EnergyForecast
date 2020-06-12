@@ -31,5 +31,5 @@ function fullInitialization() {
      * indCO2();
      * resCO2();
      * transCO2(); */
-     createCharts(generated);
+     createCharts(generated, rcomm);
 }
