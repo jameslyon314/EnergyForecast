@@ -64,6 +64,7 @@ export default function createCharts(generation, rescomm, industry, transportati
     for (let i= 0; i<33; i++){
         resGoal = resGoal.concat([{"Year":2018+i,"Name":"Goal","Value":2262+1800}]);
     }
+    resGoal[32].Text = "Goal Line";
 
     const margin = {top: 10, right: 30, bottom: 30, left: 50},
           width = 460 - margin.left - margin.right,
@@ -121,6 +122,21 @@ export default function createCharts(generation, rescomm, industry, transportati
               .y1(function(d) { return resy(d[1]); })
              )
 
+    ressvg.append("g").selectAll("text")
+        .data(resGoal)
+        .enter()
+        .append("text")
+        .attr("x", function(d) {
+        return resx(d.Year) - 25
+    })
+        .attr("y", function(d) {
+        return resy(d.Value) - 5
+    })
+        .attr("fill", "black")
+        .text(function(d) {
+        return d.Text
+    });
+
     const size = 10
     ressvg.selectAll("labelcolors")
         .data(resmygroups)
@@ -154,14 +170,6 @@ export default function createCharts(generation, rescomm, industry, transportati
               .y(function(d) { return resy(d.Value) })
              )
 
-    ressvg
-        .append("text")
-        .attr("x", 10)
-        .attr("y", 205)
-        .text("Goal Line")
-        .style("font-size", "12px") 
-        .attr("text-anchor", "left")
-        .style("alignment-baseline", "middle") 
 
     //end rescomm
 
@@ -170,6 +178,7 @@ export default function createCharts(generation, rescomm, industry, transportati
     for (let i= 1; i<33; i++){
         indGoal = indGoal.concat([{"Year":2018+i,"Name":"Goal","Value":((3800-4996)/(2050-2018)**2)*((2018+i - 2050)**2)+4996}]);
     }
+    indGoal[32].Text = "Goal Line";
 
     let indsvg = d3.select("#indArea") 
     .append("svg")
@@ -255,21 +264,28 @@ export default function createCharts(generation, rescomm, industry, transportati
               .y(function(d) { return indy(d.Value) })
              )
 
-    indsvg
+    indsvg.append("g").selectAll("text")
+        .data(indGoal)
+        .enter()
         .append("text")
-        .attr("x", 10)
-        .attr("y", 200)
-        .text("Goal Line")
-        .style("font-size", "12px") 
-        .attr("text-anchor", "left")
-        .style("alignment-baseline", "middle") 
+        .attr("x", function(d) {
+        return indx(d.Year) - 25
+    })
+        .attr("y", function(d) {
+        return indy(d.Value) - 5
+    })
+        .attr("fill", "black")
+        .text(function(d) {
+        return d.Text
+    });
 
     //end industry
 
     let transGoal = new Array(0);
     for (let i= 0; i<33; i++){
         transGoal = transGoal.concat([{"Year":2018+i,"Name":"Goal","Value":(0.01016*(2018+i-2018)**2 - 0.4031*(2018+i-2018)+28)*293*0.21}]);
-    }                 
+    }   
+        transGoal[32].Text = "Goal Line";
 
     let transsvg = d3.select("#transArea") 
     .append("svg")
@@ -354,15 +370,21 @@ export default function createCharts(generation, rescomm, industry, transportati
               .x(function(d) { return transx(d.Year) })
               .y(function(d) { return transy(d.Value) })
              )
-
-    transsvg
+    
+        transsvg.append("g").selectAll("text")
+        .data(transGoal)
+        .enter()
         .append("text")
-        .attr("x", 10)
-        .attr("y", 195)
-        .text("Goal Line")
-        .style("font-size", "12px") 
-        .attr("text-anchor", "left")
-        .style("alignment-baseline", "middle") 
+        .attr("x", function(d) {
+        return transx(d.Year) - 25
+    })
+        .attr("y", function(d) {
+        return transy(d.Value) - 5
+    })
+        .attr("fill", "black")
+        .text(function(d) {
+        return d.Text
+    });
 
     // end transportation
     {
@@ -374,6 +396,7 @@ export default function createCharts(generation, rescomm, industry, transportati
                                                                             +(transportation[6][i] - transportation[6][0]/1744 * transGoal[i].Value)/0.7
                                                                            )}]); //EIA line, plus ratio'd difference
         }
+        genGoal[32].Text = "Goal Line";
 
         const margin = {top: 10, right: 30, bottom: 30, left: 50},
               width = 460 - margin.left - margin.right,
@@ -462,15 +485,20 @@ export default function createCharts(generation, rescomm, industry, transportati
                   .x(function(d) { return x(d.Year) })
                   .y(function(d) { return y(d.Value) })
                  )
-
-        svg
-            .append("text")
-            .attr("x", 10)
-            .attr("y", 210)
-            .text("Goal Line")
-            .style("font-size", "12px") 
-            .attr("text-anchor", "left")
-            .style("alignment-baseline", "middle") 
+        svg.append("g").selectAll("text")
+        .data(genGoal)
+        .enter()
+        .append("text")
+        .attr("x", function(d) {
+        return x(d.Year) - 25
+    })
+        .attr("y", function(d) {
+        return y(d.Value) - 5
+    })
+        .attr("fill", "black")
+        .text(function(d) {
+        return d.Text
+    });
 
     } //generation
 }
