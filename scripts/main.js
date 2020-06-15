@@ -28,4 +28,5 @@ function fullInitialization() {
      * resCO2();
      * transCO2(); */
     createCharts(generated, rcomm, ind, trans);
+    
 }
