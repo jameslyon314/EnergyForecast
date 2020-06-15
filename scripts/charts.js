@@ -501,4 +501,8 @@ export default function createCharts(generation, rescomm, industry, transportati
     });
 
     } //generation
+
+
+
+
 }

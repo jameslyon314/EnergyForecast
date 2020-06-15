@@ -112,3 +112,53 @@ th{
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+.tooltipception {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted white;
+}
+
+.tooltipception .tooltipceptiontext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 2;
+    bottom: -50%;
+    left: 50%;
+    margin-left: 60px;
+}
+.tooltipception:hover .tooltipceptiontext {
+    visibility: visible;
+}
+.bubble {
+    visibility: hidden;
+    background: red;
+    color: white;
+    padding: 2px 4px;
+    position: absolute;
+    border-radius: 4px;
+    left: 50%;
+    top: -100%;
+    transform: translateX(-50%);
+}
+
+.valuerangewrap {
+    position: relative;
+}
+.methodrangewrap {
+    position: relative;
+}
+.yearrangewrap {
+    position: relative;
+}
+.checkbox{
+    margin: 0px;
+}

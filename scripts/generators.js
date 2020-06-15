@@ -1,6 +1,6 @@
 import { Resource } from './utils/index.js ';
 
-export default function runGeneration() {
+export default function generation() {
     let generated = new Array(12);
     for (let i = 0; i < 12; i++){
         generated[i] = new Array(32); 
