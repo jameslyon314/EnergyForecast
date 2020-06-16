@@ -96,11 +96,27 @@ export default function genCO2(generation, rescomm, industry, transportation){
                                     {"Year":transportation[0][i],"Source":"Other","Value":transportation[7][i]*transOtherCO2}]);
     }
 
-    let CO2 = new Array(4);
+        let allCO2 = new Array(0);
+    for (let i= 0; i<33; i++){
+        allCO2 = allCO2.concat([{"Year":generation[0][i],"Source":"Coal","Value":genCO2[0] .Value+resCO2[7] .Value+indCO2[7] .Value}],
+                                       {"Year":generation[0][i],"Source":"Gas","Value":genCO2[1] .Value+resCO2[1] .Value+indCO2[1] .Value+transCO2[1] .Value},
+                                       {"Year":generation[0][i],"Source":"Pet","Value":genCO2[6] .Value+resCO2[4] .Value+indCO2[2] .Value+transCO2[0] .Value},
+                                       {"Year":generation[0][i],"Source":"Nuke","Value":genCO2[2] .Value+resCO2[8] .Value+indCO2[8] .Value+transCO2[5] .Value},
+                                       {"Year":generation[0][i],"Source":"Solar","Value":genCO2[4] .Value+resCO2[2].Value+indCO2[3] .Value+transCO2[4] .Value },
+                                       {"Year":generation[0][i],"Source":"Wind","Value":genCO2[5] .Value+resCO2[3] .Value+indCO2[4] .Value},
+                                       {"Year":generation[0][i],"Source":"Hydro","Value":genCO2[3] .Value+indCO2[9] .Value},
+                                       {"Year":generation[0][i],"Source":"Bio","Value":genCO2[7] .Value+resCO2[5] .Value+indCO2[5] .Value+transCO2[3] .Value},
+                                       {"Year":generation[0][i],"Source":"Geo","Value":genCO2[8] .Value+resCO2[6] .Value+indCO2[6] .Value},
+                                       {"Year":generation[0][i],"Source":"Other","Value":genCO2[9] .Value+resCO2[9] .Value+indCO2[10] .Value+transCO2[6] .Value});
+    };
+    
+
+    let CO2 = new Array(5);
     CO2[0]=genCO2;
     CO2[1]=resCO2;
     CO2[2]=indCO2;
     CO2[3]=transCO2;
+    CO2[4] = allCO2;
     return CO2;
 
 }

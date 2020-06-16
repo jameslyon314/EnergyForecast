@@ -1,5 +1,5 @@
-export default function createCharts(generation, rescomm, industry, transportation,genCO2, resCO2, indCO2, transCO2) {   
-    document.getElementById("genArea").innerHTML = "";
+export default function createCharts(generation, rescomm, industry, transportation,genCO2, resCO2, indCO2, transCO2, allCO2) {   
+    document.getElementById("genArea").innerHTML = ""; 
     document.getElementById("resArea").innerHTML = "";
     document.getElementById("indArea").innerHTML = "";
     document.getElementById("transArea").innerHTML = "";
@@ -7,6 +7,8 @@ export default function createCharts(generation, rescomm, industry, transportati
     document.getElementById("resCO2Area").innerHTML = "";
     document.getElementById("indCO2Area").innerHTML = "";
     document.getElementById("transCO2Area").innerHTML = "";
+    document.getElementById("allCO2Area").innerHTML = "";
+    document.getElementById("allArea").innerHTML = "";
 
     let resContent = new Array(0);
     for (let i= 0; i<33; i++){
@@ -114,27 +116,47 @@ export default function createCharts(generation, rescomm, industry, transportati
     .range(['#2A2A2A','#FF8B00','#AF00FF','#007EFF','#FFF300','#49EDFF','#DD0000','#207900','#6B5A00','#AFACAC']);
 
 
+    let allContent = new Array(0);
+    for (let i= 0; i<33; i++){
+        allContent = allContent.concat([{"Year":generation[0][i],"Source":"Coal","Value":generation[1][i]+rescomm[1][i]+industry[1][i]}],
+                                       {"Year":generation[0][i],"Source":"Gas","Value":generation[2][i]+rescomm[2][i]+industry[2][i]+transportation[1][i]},
+                                       {"Year":generation[0][i],"Source":"Pet","Value":generation[3][i]+rescomm[3][i]+industry[3][i]+transportation[2][i]},
+                                       {"Year":generation[0][i],"Source":"Nuke","Value":generation[7][i]+rescomm[6][i]+industry[7][i]+transportation[7][i]},
+                                       {"Year":generation[0][i],"Source":"Solar","Value":generation[8][i]+transportation[5][i]+rescomm[7][i]+industry[8][i]},
+                                       {"Year":generation[0][i],"Source":"Wind","Value":generation[9][i]+rescomm[8][i]+industry[9][i]},
+                                       {"Year":generation[0][i],"Source":"Hydro","Value":generation[6][i]+industry[6][i]},
+                                       {"Year":generation[0][i],"Source":"Bio","Value":generation[4][i]+rescomm[4][i]+industry[4][i]+transportation[3][i]},
+                                       {"Year":generation[0][i],"Source":"Geo","Value":generation[5][i]+rescomm[5][i]+industry[5][i]},
+                                       {"Year":generation[0][i],"Source":"Other","Value":generation[10][i]+rescomm[10][i]+industry[11][i]+transportation[7][i]});
+    };
+    const allgroups = ["Coal", "Natural Gas","Petroleum", "Nuclear","Solar","Wind", "Hydropower","Biomass", "Geothermal", "Other"] // list of group names
+    const allgroup = [1,2,3,4,5,6,7,8,9,10] // list of group names
+    const allcolor = d3.scaleOrdinal()
+    .domain(allgroups)
+    .range(['#2A2A2A','#FF8B00','#DD0000','#AF00FF','#FFF300','#49EDFF','#007EFF','#207900','#6B5A00','#AFACAC']);
+
     const size=10;
     const yheight = 10000;
-    const transyheight = 4000;
+    const transyheight = 5000;
     const co2height = 5000;
     const margin = {top: 10, right: 30, bottom: 30, left: 50},
           width = 460 - margin.left - margin.right,
-          height = 400 - margin.top - margin.bottom;      
+          height = 400 - margin.top - margin.bottom;   
 
+    makeChart(resGoal,"#resArea",resContent,resgroups,resgroup,rescolor,yheight );
+    makeChart(indGoal,"#indArea",indContent,indgroups,indgroup,indcolor,yheight );
+    makeChart(transGoal,"#transArea",transContent,transgroups,transgroup,transcolor,transyheight );
+    makeChart(genGoal,"#genArea",genContent,gengroups,gengroup,gencolor,yheight );
+    makeChart({"Year":2018,"Name":"Goal","Value":0},"#allArea",allContent,allgroups,allgroup,allcolor,20000)
 
-    makeChart(resGoal,"#resArea",resContent,resgroups,resgroup,rescolor,yheight);
-    makeChart(indGoal,"#indArea",indContent,indgroups,indgroup,indcolor,yheight);
-    makeChart(transGoal,"#transArea",transContent,transgroups,transgroup,transcolor,transyheight);
-    makeChart(genGoal,"#genArea",genContent,gengroups,gengroup,gencolor,yheight);
-
-    makeChart({"Year":2018,"Name":"Goal","Value":0},"#genCO2Area",genCO2,gengroups,gengroup,gencolor,co2height);
-    makeChart({"Year":2018,"Name":"Goal","Value":0},"#resCO2Area",resCO2,resgroups,resgroup,rescolor,co2height);
-    makeChart({"Year":2018,"Name":"Goal","Value":0},"#indCO2Area",indCO2,indgroups,indgroup,indcolor,co2height);
+    makeChart({"Year":2018,"Name":"Goal","Value":0},"#genCO2Area",genCO2,gengroups,gengroup,gencolor,co2height );
+    makeChart({"Year":2018,"Name":"Goal","Value":0},"#resCO2Area",resCO2,resgroups,resgroup,rescolor,co2height );
+    makeChart({"Year":2018,"Name":"Goal","Value":0},"#indCO2Area",indCO2,indgroups,indgroup,indcolor,co2height );
     makeChart({"Year":2018,"Name":"Goal","Value":0},"#transCO2Area",transCO2,transgroups,transgroup,transcolor,co2height);
+    makeChart({"Year":2018,"Name":"Goal","Value":0},"#allCO2Area",allCO2,allgroups,allgroup,allcolor,10000);
 
 
-    function makeChart(Goal,svgtarget,content,mygroups,mygroup,color,yheight){
+    function makeChart(Goal,svgtarget,content,mygroups,mygroup,color,yheight,title,units){
 
         let svg = d3.select(svgtarget) 
         .append("svg")

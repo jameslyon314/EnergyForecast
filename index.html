@@ -10,6 +10,7 @@
 
     <body>
 
+        Instructions: Using the controls underneath each graph, try to enact a plan of how you would like each energy source to develop in each sector (i.e. try to eliminate fossil fuels), while maintaining the expected energy requirements for the entire time(from EIA.gov). First slider is the amount of power that the source will contribute (0 to 4000 TWh), the second is the method by which it will reach its end goal (exponentially (fast start), quadratically (fast start), linearly, quadratically (slow start), exponentially (slow start), or unchanged from 2018 levels). Tick the checkbox if you want a certain source to reach its goal by a specific year, controlled by the neighboring slider. Note, that increasing the electricity demand in the Residential/Commercial, Industrial, and Transportation sectors will increase the goal line in the Generation sector. You may notice renewables/noncarbon sources have carbon emissions in the bottom tier or graphs, this is because lifecycle emissions are considered here (i.e. carbon emissions needed to mine ores, set concrete, etc.)
 
         <table style="width:130%">
             <tr>
@@ -19,8 +20,9 @@
                         <table style="width:35%">
 
                             <tr>
-                                <th colspan="4" style="text-align:center">Electricty Generating Sector</th>
+                                <th colspan="4" style="font-size:24px;text-align:center;text-decoration:underline" >Electricty Generating Sector</th>
                             </tr>
+                            <tr><th  colspan="4" style="font-size:18px;text-align:center">Power Produced (TWh)</th></tr>
                             <tr>
                                 <td colspan="4"><div style="width=100%" id="genArea"></div></td>
                             </tr>
@@ -33,66 +35,69 @@
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Coal<span class="tooltiptext">Coal is the 'dirtiest' form of power generation, however it is quite cheap and abundant</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="1146" class="slider" id="genCoalf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genCoalm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="genCoalm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genCoalCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genCoalYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Natural Gas<span class="tooltiptext">Natural Gas burns 'cleanly' into just CO2, and is relatively cheap and abundant</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="1064" class="slider" id="genGasf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genGasm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="genGasm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genGasCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genGasYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Petroleum <span class="tooltiptext">Utility scale petroleum generators are uncommon and also quite 'dirty'</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="25" class="slider" id="genPetf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genPetm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="genPetm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genPetCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genPetYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Biomass <span class="tooltiptext">Biomass is an umbrella term for wood, garbage, bioethanol, etc.</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="56" class="slider" id="genBiof_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genBiom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="genBiom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genBioCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genBioYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Geothermal <span class="tooltiptext">Utility scale geothermal plants require very specific siting, but have no carbon emissions</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="21" class="slider" id="genGeof_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genGeom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="genGeom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genGeoCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genGeoYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Hydrothermal <span class="tooltiptext">Hydrothermal relies on rivers and dams, and has no carbon emissions</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="292" class="slider" id="genHydrof_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genHydrom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="genHydrom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genHydroCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genHydroYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Nuclear <span class="tooltiptext">Nuclear has the highest power density, but is highly regulated and expensive, and generates <div class="tooltipception">radioactive waste <span class="tooltipceptiontext">There is much debate on how to deal with this, but it is not as dangerous or concerning as media makes it out to be</span></div></span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="807" class="slider" id="genNukef_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genNukem_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="genNukem_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genNukeCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genNukeYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle">Solar <div class="tooltip"><span class="tooltiptext">Solar has no active carbon emissions, but relies on increasingly scarce rare earth metals</span> </div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="67" class="slider" id="genSolarf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genSolarm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="genSolarm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genSolarCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genSolarYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Wind <span class="tooltiptext">Wind turbines are very efficient, but are subject to siting and intermittency</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="277" class="slider" id="genWindf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genWindm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="genWindm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genWindCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genWindYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Other <span class="tooltiptext">Whatever you want it to be</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="genOtherf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genOtherm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="genOtherm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genOtherCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genOtherYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
-                            </tr><tr><td></td><td></td><td></td><td>&nbsp;</td></tr>
+                            </tr><tr><td>&nbsp;</td></tr>
+                            <tr><td colspan="4">
+                                <div style="font-size:18px;text-align:center">CO2 Generated <div class="tooltip">(MMmt)<span class="tooltiptext" style="width:240px;font-size:14px">Million metric tonnes: One metric ton is about the weight of a sedan, and this unit is millions of those!</span></div></div></td></tr>
+                            <tr><td colspan="4"><div id="genCO2Area"></div></td></tr>
+                            <tr><th colspan="3" style="text-align:right">Enable 80% efficiency carbon capture? (not working yet)</th><td colspan="1"><div class="yearrangewrap"><input type="checkbox" id="CCS_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="CCSYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td></tr>
                         </table>
-                        <br>
-                        <div id="genCO2Area"></div>
+
                     </div>
                 </td>
 
@@ -103,8 +108,9 @@
                         <table style="width:35%">
 
                             <tr>
-                                <th colspan="4" style="text-align:center">Residential and Commerical Sector</th>
+                                <th colspan="4" style="font-size:24px;text-align:center;text-decoration:underline" >Residential and Commercial Sectors</th>
                             </tr>
+                            <tr><th  colspan="4" style="font-size:18px;text-align:center">Power Produced (TWh)</th></tr>
                             <tr>
                                 <td colspan="4"><div style="width=100%" id="resArea"></div></td>
                             </tr>
@@ -117,66 +123,70 @@
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Coal<span class="tooltiptext">Coal in this sector would refer to coal cooking methods, or outdated coal-burning heaters</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="4" class="slider" id="resCoalf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="resCoalm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="resCoalm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="resCoalCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="resCoalYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Natural Gas<span class="tooltiptext">Natural Gas in this sector contributes to gas stoves and heating systems</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="1668" class="slider" id="resGasf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="resGasm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="resGasm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="resGasCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="resGasYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Petroleum<span class="tooltiptext">Petroleum in this sector mainly refers to heating oil</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="345" class="slider" id="resPetf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="resPetm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="resPetm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="resPetCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="resPetYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Biomass<span class="tooltiptext">An umbrella term for wood, biomass, bioethanol, etc., mainly for heating purposes</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="128" class="slider" id="resBiof_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="resBiom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="resBiom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="resBioCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="resBioYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Geothermal<span class="tooltiptext">Geothermal here does not generate electricity, rather is a heating/cooling method</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="11" class="slider" id="resGeof_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="resGeom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="resGeom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="resGeoCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="resGeoYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Nuclear<span class="tooltiptext">Nuclear in this sector is unlikely, but upcoming micro-reactors may be viable for large office complexes</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="resNukef_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="resNukem_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="resNukem_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="resNukeCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="resNukeYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Solar<span class="tooltiptext">Could refer to photovoltaic (electricity) or solar passive heating methods</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="42" class="slider" id="resSolarf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="resSolarm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="resSolarm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="resSolarCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="resSolarYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Wind<span class="tooltiptext">Wind in this sector would be mainly be targetted to 'personal' wind turbines, which could have siting limitations</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="resWindf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="resWindm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="resWindm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="resWindCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="resWindYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Electric Grid<span class="tooltiptext">Anything that gets plugged in, from appliances to electric heating systems</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="1847" class="slider" id="resGridf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="resGridm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="resGridm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="resGridCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="resGridYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Other<span class="tooltiptext">Whatever you want it to be</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="resOtherf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="resOtherm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="resOtherm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="resOtherCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="resOtherYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
-                            </tr><tr><td></td><td></td><td></td><td>&nbsp;</td></tr>
+                            </tr><tr><td>&nbsp;</td></tr>
+                            <tr><td colspan="4">
+                                <div style="font-size:18px;text-align:center">CO2 Generated <div class="tooltip">(MMmt)<span class="tooltiptext" style="width:240px;font-size:14px">Million metric tonnes: One metric ton is about the weight of a sedan, and this unit is millions of those!</span></div></div></td></tr>
+                            <tr><td colspan="4"><div id="resCO2Area"></div></td></tr>
                         </table>
                         <br> 
-                        <div id="resCO2Area"></div>
+
+
                     </div>
                 </td>
 
@@ -187,8 +197,9 @@
                         <table style="width:35%" >
 
                             <tr>
-                                <th colspan="4" style="text-align:center">Industrial Sector</th>
+                                <th colspan="4" style="font-size:24px;text-align:center;text-decoration:underline" >Industrial Sector</th>
                             </tr>
+                            <tr><th  colspan="4" style="font-size:18px;text-align:center">Power Produced (TWh)</th></tr>
                             <tr>
                                 <td colspan="4"><div style="width=100%" id="indArea"></div></td>
                             </tr>
@@ -201,72 +212,75 @@
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Coal<span class="tooltiptext">Industrial coal use could be for electricity generation or as a heat source</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="176" class="slider" id="indCoalf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="indCoalm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="indCoalm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="indCoalCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="indCoalYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Natural Gas<span class="tooltiptext">Industrial natural gas use could be for electricity generation or as a heat source, as well as being burned in <div class="tooltipception">flare stacks <span class="tooltipceptiontext">In the case that gases need to be released for safety or other reasons, they will be burned before entering the atmosphere</span></div> </span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="1494" class="slider" id="indGasf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="indGasm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="indGasm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="indGasCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="indGasYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Petroleum<span class="tooltiptext">Industrial petroleum use could be for electricity generation or as a heat source, as well as byproducts being burned in <div class="tooltipception">flare stacks <span class="tooltipceptiontext">In the case that gases need to be released for safety or other reasons, they will be burned before entering the atmosphere</span></div></span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="1272" class="slider" id="indPetf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="indPetm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="indPetm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="indPetCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="indPetYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Biomass<span class="tooltiptext">Biomass is an umbrella term for wood, garbage, bioethanol, etc. and could have many use cases in industry</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="366" class="slider" id="indBiof_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="indBiom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="indBiom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="indBioCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="indBioYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Geothermal<span class="tooltiptext">Geothermal could be used in industry for heating/cooling purposes, or small scale electricity generation</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="indGeof_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="indGeom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="indGeom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="indGeoCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="indGeoYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Hydropower<span class="tooltiptext">Industrial hydropower relies on river locations, but could be used for electricity generation or to turn a driveshaft</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="1" class="slider" id="indHydrof_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="indHydrom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="indHydrom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="indHydroCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="indHydroYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Nuclear<span class="tooltiptext">Nuclear in industry is unlikely, but upcoming small and micro-reactors may be viable for industrial complexes </span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="indNukef_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="indNukem_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="indNukem_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="indNukeCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="indNukeYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Solar<span class="tooltiptext">Could refer to photovoltaic (electricity) or solar passive heating methods</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="4" class="slider" id="indSolarf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="indSolarm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="indSolarm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="indSolarCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="indSolarYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>  
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Wind<span class="tooltiptext">Industrial wind would provide electricity or turn a driveshaft, but its intermittency makes it difficult to implement in a 24/7 environment</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="indWindf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="indWindm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="indWindm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="indWindCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="indWindYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Electric Grid<span class="tooltiptext">Any electricity that the industrial sector purchases from utilities</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="467" class="slider" id="indGridf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="indGridm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="indGridm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="indGridCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="indGridYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Other<span class="tooltiptext">Anything you want it to be</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="indOtherf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="indOtherm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="indOtherm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="indOtherCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="indOtherYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
+                            <tr><td colspan="4">
+                                <div style="font-size:18px;text-align:center">CO2 Generated <div class="tooltip">(MMmt)<span class="tooltiptext" style="width:240px;font-size:14px">Million metric tonnes: One metric ton is about the weight of a sedan, and this unit is millions of those!</span></div></div></td></tr>
+                            <tr><td colspan="4"><div id="indCO2Area"></div></td></tr>
                         </table>
                         <br>
-                        <div id="indCO2Area"></div>
+
                     </div>
                 </td>
 
@@ -277,8 +291,9 @@
                         <table style="width:35%">
 
                             <tr>
-                                <th colspan="4" style="text-align:center">Transportation Sector</th>
+                                <th colspan="4" style="font-size:24px;text-align:center;text-decoration:underline" >Transportation Sector</th>
                             </tr>
+                            <tr><th  colspan="4" style="font-size:18px;text-align:center">Power Produced (TWh)</th></tr>
                             <tr>
                                 <td colspan="4"><div style="width=100%" id="transArea"></div></td>
                             </tr>
@@ -290,55 +305,83 @@
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">NatGas/Hydrogen<span class="tooltiptext">NatGas is not a common source, but possible. Hydrogen is mainly formed from <div class="tooltipception">natural gas cracking <span class="tooltipceptiontext">High temperature decomposition of natural gas, that ultimately results in similar carbon emissions to natural gas combustion</span></div></span></div></td>
-                                <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="54" class="slider" id="transGasf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="transGasm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="valuerangewrap"><input type="range" min="0" max="2000" value="54" class="slider" id="transGasf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="transGasm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="transGasCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="transGasYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Petroleum<span class="tooltiptext">Gasoline, Diesel, Jet Fuel, etc. Energy dense and portable</span></div></td>
-                                <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="1600" class="slider" id="transPetf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="transPetm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="valuerangewrap"><input type="range" min="0" max="2000" value="1600" class="slider" id="transPetf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="transPetm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="transPetCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="transPetYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Biomass<span class="tooltiptext">Biomass in this sector would focus on bioethanol, biodiesel, etc.</span></div></td>
-                                <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="88" class="slider" id="transBiof_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="transBiom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="valuerangewrap"><input type="range" min="0" max="2000" value="88" class="slider" id="transBiof_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="transBiom_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="transBioCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="transBioYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Nuclear<span class="tooltiptext">Nuclear for transportation would be limited to mainly large cargo ships, as it is not viable for other means of transport</span></div></td>
-                                <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="transNukef_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="transNukem_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="valuerangewrap"><input type="range" min="0" max="2000" value="0" class="slider" id="transNukef_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="transNukem_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="transNukeCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="transNukeYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Solar<span class="tooltiptext">This would specifically be solar panels ON cars, airplanes, etc.</span></div></td>
-                                <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="transSolarf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="transSolarm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="valuerangewrap"><input type="range" min="0" max="2000" value="0" class="slider" id="transSolarf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="transSolarm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="transSolarCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="transSolarYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>   
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Electric Grid<span class="tooltiptext">Electric modes of transportation, mainly cars and trains</span></div></td>
-                                <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="2" class="slider" id="transGridf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="transGridm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="valuerangewrap"><input type="range" min="0" max="2000" value="2" class="slider" id="transGridf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="transGridm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="transGridCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="transGridYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
                                 <td class="sourceTitle"><div class="tooltip">Other<span class="tooltiptext">Anything you want it to be</span></div></td>
-                                <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="transOtherf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
-                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="transOtherm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="valuerangewrap"><input type="range" min="0" max="2000" value="0" class="slider" id="transOtherf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
+                                <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="3" class="slider" id="transOtherm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="transOtherCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="transOtherYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
+                            </tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>
+                            <tr><td colspan="4">
+                                <div style="font-size:18px;text-align:center">CO2 Generated <div class="tooltip">(MMmt)<span class="tooltiptext" style="width:240px;font-size:14px">Million metric tonnes: One metric ton is about the weight of a sedan, and this unit is millions of those!</span></div></div></td></tr>
+                            <tr><td colspan="4"><div id="transCO2Area"></div></td></tr>
+                        </table>
+
+                    </div>
+                </td>
+
+                <td style="width:2%"></td>
+
+                <td>
+                    <div class="sectorColumn">
+                        <table style="width:35%">
+
+                            <tr>
+                                <th style="font-size:24px;text-align:center;text-decoration:underline" >All Sectors</th>
+                            </tr>
+                            <tr><th style="font-size:18px;text-align:center">Power Produced (TWh)</th></tr>
+                            <tr>
+                                <td><div style="width=100%" id="allArea"></div></td>
+                            </tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>
+                            <tr><td>
+                                <div style="font-size:18px;text-align:center">CO2 Generated <div class="tooltip">(MMmt)<span class="tooltiptext" style="width:240px;font-size:14px">Million metric tonnes: One metric ton is about the weight of a sedan, and this unit is millions of those!</span></div></div></td></tr>
+                            <tr>
+
+                                <td><div style="width=100%" id="allCO2Area"></div></td>
+                            
                             </tr>
                         </table>
-                        <br><br><br><br><br><br><br>
-                        <div id="transCO2Area"></div>
                     </div>
+
+
+
                 </td>
             </tr>
         </table>
 
-        Instructions: Using the controls underneath each graph, try to enact a plan of how you would like each energy source to develop in each sector (i.e. try to eliminate fossil fuels), while maintaining the expected energy requirements for the entire time(from EIA.gov). First slider is the amount of power that the source will contribute (0 to 4000 TWh), the second is the method by which it will reach its end goal (exponentially (fast start), quadratically (fast start), linearly, quadratically (slow start), exponentially (slow start), or unchanged from 2018 levels). Tick the checkbox if you want a certain source to reach its goal by a specific year, controlled by the neighboring slider. Note, that increasing the electricity demand in the Residential/Commercial, Industrial, and Transportation sectors will increase the goal line in the Generation sector. GLHF
 
     </body>
 </html>
