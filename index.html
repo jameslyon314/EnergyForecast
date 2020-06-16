@@ -15,8 +15,8 @@
             <tr>
                 <td width="10%"></td>
                 <td>
-                    <div>
-                        <table style="width:35%" class="sectorColumn">
+                    <div class="sectorColumn">
+                        <table style="width:35%">
 
                             <tr>
                                 <th colspan="4" style="text-align:center">Electricty Generating Sector</th>
@@ -73,7 +73,7 @@
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genNukeCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genNukeYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
-                                <td class="sourceTitle"><div class="tooltip">Solar <span class="tooltiptext">Solar has no active carbon emissions, but has <div class="tooltipception">non-negligible <span class="tooltipceptiontext">There is a lot of research going into making less rare-metal intense panels and batteries, which will lower these lifetime emissions </span></div> from manufacturing, as well as being intermittent</span></div></td>
+                                <td class="sourceTitle">Solar <div class="tooltip"><span class="tooltiptext">Solar has no active carbon emissions, but relies on increasingly scarce rare earth metals</span> </div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="67" class="slider" id="genSolarf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genSolarm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genSolarCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genSolarYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
@@ -85,21 +85,22 @@
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genWindCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genWindYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                             <tr>
-                                <td class="sourceTitle"><div class="tooltip">Other <span class="tooltiptext">Whatever you want it to be.</span></div></td>
+                                <td class="sourceTitle"><div class="tooltip">Other <span class="tooltiptext">Whatever you want it to be</span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="genOtherf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="genOtherm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="genOtherCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="genOtherYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
-                            </tr>
+                            </tr><tr><td></td><td></td><td></td><td>&nbsp;</td></tr>
                         </table>
                         <br>
+                        <div id="genCO2Area"></div>
                     </div>
                 </td>
 
                 <td style="width:2%"></td>
 
                 <td>
-                    <div>
-                        <table style="width:35%"  class="sectorColumn">
+                    <div   class="sectorColumn">
+                        <table style="width:35%">
 
                             <tr>
                                 <th colspan="4" style="text-align:center">Residential and Commerical Sector</th>
@@ -172,17 +173,18 @@
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="0" class="slider" id="resOtherf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="resOtherm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="resOtherCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="resOtherYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
-                            </tr>
+                            </tr><tr><td></td><td></td><td></td><td>&nbsp;</td></tr>
                         </table>
                         <br> 
+                        <div id="resCO2Area"></div>
                     </div>
                 </td>
 
                 <td style="width:2%"></td>
 
                 <td>
-                    <div>
-                        <table style="width:35%"  class="sectorColumn">
+                    <div class="sectorColumn">
+                        <table style="width:35%" >
 
                             <tr>
                                 <th colspan="4" style="text-align:center">Industrial Sector</th>
@@ -264,13 +266,14 @@
                             </tr>
                         </table>
                         <br>
+                        <div id="indCO2Area"></div>
                     </div>
                 </td>
 
                 <td style="width:2%"></td>
 
                 <td>
-                    <div>
+                    <div class="sectorColumn">
                         <table style="width:35%">
 
                             <tr>
@@ -286,7 +289,7 @@
                                 <th width="30%">Reach Goal By Specific Year?</th>
                             </tr>
                             <tr>
-                                <td class="sourceTitle"><div class="tooltip">NatGas/Hydrogen<span class="tooltiptext">NatGas is not a common source, but possible. Hydrogen is mainly formed from <div class="tooltipception">natural gas cracking <span class="tooltipceptiontext">High temperature decomposition of natural gas, that ultimately results in similar carbon emissions to natural gas combustion</span></div></span></span></div></td>
+                                <td class="sourceTitle"><div class="tooltip">NatGas/Hydrogen<span class="tooltiptext">NatGas is not a common source, but possible. Hydrogen is mainly formed from <div class="tooltipception">natural gas cracking <span class="tooltipceptiontext">High temperature decomposition of natural gas, that ultimately results in similar carbon emissions to natural gas combustion</span></div></span></div></td>
                                 <td><div class="valuerangewrap"><input type="range" min="0" max="4000" value="54" class="slider" id="transGasf_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="methodrangewrap"><input type="range" min="1" max="6" value="6" class="slider" id="transGasm_var" oninput = fullInitialization()><output class="bubble"></output></div></td>
                                 <td><div class="yearrangewrap"><input type="checkbox" id="transGasCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="transGasYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
@@ -328,130 +331,14 @@
                                 <td><div class="yearrangewrap"><input type="checkbox" id="transOtherCutoff_var" value="0" class="checkbox" oninput = fullInitialization()>&nbsp 2019 <input type="range" min="2019" max="2050" value="2035 "class="yearslider" id="transOtherYear_var" oninput = fullInitialization()><output class="bubble"></output>2050</div></td>
                             </tr>
                         </table>
-                        <br>      
+                        <br><br><br><br><br><br><br>
+                        <div id="transCO2Area"></div>
                     </div>
-                </td></tr>
+                </td>
+            </tr>
         </table>
 
-        Instructions: Using the controls underneath each graph, try to enact a plan of how you would like each energy source to develop in each sector (i.e. try to eliminate fossil fuels), while maintaining the expected energy requirements for the entire time(from EIA.gov). First slider is the amount of power that the source will contribute (0 to 4000 TWh), the second is the method by which it will reach its end goal (exponentially (slow start), quadratically (slow start), linearly, quadratically (fast start), exponentially (fast start), or unchanged from 2018 levels). Tick the checkbox if you want a certain source to reach its goal by a specific year, controlled by the neighboring slider. Note, that increasing the electricity demand in the Residential/Commercial, Industrial, and Transportation sectors will increase the goal line in the Generation sector. GLHF
-
-
-        <script>
-
-            const allValueRanges = document.querySelectorAll(".valuerangewrap");
-            const allMethodRanges = document.querySelectorAll(".methodrangewrap");
-            const allYearRanges = document.querySelectorAll(".yearrangewrap");
-
-            allValueRanges.forEach(wrap => {
-                const range = wrap.querySelector(".slider");
-                const bubble = wrap.querySelector(".bubble");
-                range.addEventListener("input", () => {
-                    setBubble(range, bubble);
-                });
-                range.addEventListener("mousedown", () => {
-                    bubbleVision(bubble);
-                });
-                range.addEventListener("mouseup", () => {
-                    bubbleInvision(bubble);
-                });
-                setBubble(range, bubble);
-
-            });
-
-            allMethodRanges.forEach(wrap => {
-                const range = wrap.querySelector(".slider");
-                const bubble = wrap.querySelector(".bubble");
-                range.addEventListener("input", () => {
-                    setRangeBubble(range, bubble);
-                });
-                range.addEventListener("mousedown", () => {
-                    bubbleVision(bubble);
-                });
-                range.addEventListener("mouseup", () => {
-                    bubbleInvision(bubble);
-                });
-                setRangeBubble(range, bubble);
-
-            });
-
-            allYearRanges.forEach(wrap => {
-                const range = wrap.querySelector(".yearslider");
-                const bubble = wrap.querySelector(".bubble");
-                range.addEventListener("input", () => {
-                    setYearBubble(range, bubble);
-                });
-                range.addEventListener("mousedown", () => {
-                    bubbleVision(bubble);
-                });
-                range.addEventListener("mouseup", () => {
-                    bubbleInvision(bubble);
-                });
-                setYearBubble(range, bubble);
-
-            });
-
-
-            function bubbleVision(bubble){
-                bubble.style.visibility = 'visible';
-            }
-            function bubbleInvision(bubble){
-                bubble.style.visibility = 'hidden';
-            }
-
-            function setRangeBubble(range, bubble){
-
-                const val = range.value;
-                const min = range.min;
-                const max = range.max;
-                var methodText;
-                switch(val){
-                    case '1': 
-                        methodText = "Very Fast";
-                        break;
-                    case '2': 
-                        methodText = "Moderately Fast";
-                        break;
-                    case '3': 
-                        methodText = "Steadily";
-                        break;
-                    case '4': 
-                        methodText = "Moderately Slow";
-                        break;
-                    case '5': 
-                        methodText = "Very Slow";
-                        break;
-                    case '6': 
-                        methodText = "Unchanged";
-                        break;
-                    default:
-                }
-                const newVal = Number((((val - min) * 100) / (max - min))*0.9);
-                bubble.innerHTML = methodText;
-                bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.35}px))`;    
-            }
-
-            function setBubble(range, bubble) {
-
-                const val = range.value;
-                const min = range.min;
-                const max = range.max;
-                const newVal = Number(((val - min) * 100) / (max - min));
-                bubble.innerHTML = val;
-                bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.35}px))`;                
-            }
-
-            function setYearBubble(range, bubble) {
-
-                const val = range.value;
-                const min = range.min;
-                const max = range.max;
-                const newVal = Number((((val - min) * 100) / (max - min))*0.40 + 35); //needs to be from 35-75, not 0-100
-                bubble.innerHTML = val;
-                bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.2}px))`;                
-            }
-
-        </script>
-
-
+        Instructions: Using the controls underneath each graph, try to enact a plan of how you would like each energy source to develop in each sector (i.e. try to eliminate fossil fuels), while maintaining the expected energy requirements for the entire time(from EIA.gov). First slider is the amount of power that the source will contribute (0 to 4000 TWh), the second is the method by which it will reach its end goal (exponentially (fast start), quadratically (fast start), linearly, quadratically (slow start), exponentially (slow start), or unchanged from 2018 levels). Tick the checkbox if you want a certain source to reach its goal by a specific year, controlled by the neighboring slider. Note, that increasing the electricity demand in the Residential/Commercial, Industrial, and Transportation sectors will increase the goal line in the Generation sector. GLHF
+        <div id="resCO2Area"></div><div id="indCO2Area"></div><div id="transCO2Area"></div>
     </body>
 </html>

@@ -3,6 +3,8 @@ import industry from './industry.js';
 import rescomm from './rescomm.js';
 import transportation from './transport.js';
 import createCharts from './charts.js';
+import UIQOL from './UIQOL.js';
+import co2 from './co2.js';
 
 function init() {
     window.fullInitialization = fullInitialization;
@@ -23,10 +25,18 @@ function fullInitialization() {
     const rcomm = rescomm();
 
     const trans = transportation();
+    
+    const CO2 = co2(generated, rcomm, ind, trans);
+    let genCO2=CO2[0];
+    let resCO2=CO2[1];
+    let indCO2=CO2[2];
+    let transCO2=CO2[3];
     /* genCO2();
      * indCO2();
      * resCO2();
      * transCO2(); */
-    createCharts(generated, rcomm, ind, trans);
+    createCharts(generated, rcomm, ind, trans, genCO2, resCO2, indCO2, transCO2);
+    UIQOL();
+
     
 }

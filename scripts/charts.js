@@ -1,8 +1,12 @@
-export default function createCharts(generation, rescomm, industry, transportation) {   
+export default function createCharts(generation, rescomm, industry, transportation,genCO2, resCO2, indCO2, transCO2) {   
     document.getElementById("genArea").innerHTML = "";
     document.getElementById("resArea").innerHTML = "";
     document.getElementById("indArea").innerHTML = "";
     document.getElementById("transArea").innerHTML = "";
+    document.getElementById("genCO2Area").innerHTML = "";
+    document.getElementById("resCO2Area").innerHTML = "";
+    document.getElementById("indCO2Area").innerHTML = "";
+    document.getElementById("transCO2Area").innerHTML = "";
 
     let resContent = new Array(0);
     for (let i= 0; i<33; i++){
@@ -102,6 +106,7 @@ export default function createCharts(generation, rescomm, industry, transportati
                                                                         +(transportation[6][i] - transportation[6][0]/1744 * transGoal[i].Value)/0.7
                                                                        )}]); //EIA line, plus ratio'd difference
     }
+    genGoal[32].Text = "Goal Line";
     const gengroups = ["Coal", "Natural Gas", "Nuclear", "Hydropower", "Solar", "Wind","Petroleum", "Biomass", "Geothermal", "Other"] // list of group names
     const gengroup = [1,2,3,4,5,6,7,8,9,10] // list of group names
     const gencolor = d3.scaleOrdinal()
@@ -112,6 +117,7 @@ export default function createCharts(generation, rescomm, industry, transportati
     const size=10;
     const yheight = 10000;
     const transyheight = 4000;
+    const co2height = 5000;
     const margin = {top: 10, right: 30, bottom: 30, left: 50},
           width = 460 - margin.left - margin.right,
           height = 400 - margin.top - margin.bottom;      
@@ -121,6 +127,11 @@ export default function createCharts(generation, rescomm, industry, transportati
     makeChart(indGoal,"#indArea",indContent,indgroups,indgroup,indcolor,yheight);
     makeChart(transGoal,"#transArea",transContent,transgroups,transgroup,transcolor,transyheight);
     makeChart(genGoal,"#genArea",genContent,gengroups,gengroup,gencolor,yheight);
+
+    makeChart({"Year":2018,"Name":"Goal","Value":0},"#genCO2Area",genCO2,gengroups,gengroup,gencolor,co2height);
+    makeChart({"Year":2018,"Name":"Goal","Value":0},"#resCO2Area",resCO2,resgroups,resgroup,rescolor,co2height);
+    makeChart({"Year":2018,"Name":"Goal","Value":0},"#indCO2Area",indCO2,indgroups,indgroup,indcolor,co2height);
+    makeChart({"Year":2018,"Name":"Goal","Value":0},"#transCO2Area",transCO2,transgroups,transgroup,transcolor,co2height);
 
 
     function makeChart(Goal,svgtarget,content,mygroups,mygroup,color,yheight){
@@ -221,3 +232,4 @@ export default function createCharts(generation, rescomm, industry, transportati
                  )
     }
 }
+

@@ -1,207 +1,106 @@
-export function genCO2(){
-    let genCO2 = new Array(11)
-    for (let i = 0; i < 11; i++){
-        genCO2[i] = new Array(33); 
-    }
-    for (let i = 0; i < 33; i++){
-        generation[0][i] = 2018+i;
-    }
+export default function genCO2(generation, rescomm, industry, transportation){
 
-    let genCoalCO2 = 0;
-    let genGasCO2 = 0;
-    let genPetCO2 = 0;
-    let genBioCO2 = 0;
-    let genGeoCO2 = 0;
-    let genHydroCO2 = 0;
-    let genNukeCO2 = 0;
-    let genSolarCO2 = 0;
-    let genWindCO2 = 0;
+
+    let genCoalCO2 = 1150/1146;
+    let genGasCO2 = 581/1063.6;
+    let genPetCO2 = 0.95;
+    let genBioCO2 = 0.84;
+    let genGeoCO2 = 0.038;
+    let genHydroCO2 = 0.024;
+    let genNukeCO2 = 0.012;
+    let genSolarCO2 = 0.045;
+    let genWindCO2 = 0.011;
     let genOtherCO2 = 0;
 
-    for (let i = 0; i < 33; i++){
-        genCO2[1][i] = generation[1][i]*genCoalCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        genCO2[2][i] = generation[2][i]*genGasCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        genCO2[3][i] = generation[3][i]*genPetCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        genCO2[4][i] = generation[4][i]*genBioCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        genCO2[5][i] = generation[5][i]*genGeoCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        genCO2[6][i] = generation[6][i]*genHydroCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        genCO2[7][i] = generation[7][i]*genNukeCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        genCO2[8][i] = generation[8][i]*genSolarCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        genCO2[9][i] = generation[9][i]*genWindCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        genCO2[10][i] = generation[10][i]*genOtherCO2;
-    }
-}
-
-function indCO2(){
-    let indCO2 = new Array(11)
-    for (let i = 0; i < 11; i++){
-        indCO2[i] = new Array(33); 
-    }
-    for (let i = 0; i < 33; i++){
-        inderation[0][i] = 2018+i;
-    }
-
-    let indCoalCO2 = 0;
-    let indGasCO2 = 0;
-    let indPetCO2 = 0;
-    let indBioCO2 = 0;
-    let indGeoCO2 = 0;
-    let indHydroCO2 = 0;
-    let indNukeCO2 = 0;
-    let indSolarCO2 = 0;
-    let indWindCO2 = 0;
+    let indCoalCO2 = 0.61;
+    let indGasCO2 = .36;
+    let indPetCO2 = .28;
+    let indBioCO2 = .28;
+    let indGeoCO2 = .038;
+    let indHydroCO2 = .024;
+    let indNukeCO2 = 0.012;
+    let indSolarCO2 = .045;
+    let indWindCO2 = 0.011;
     let indOtherCO2 = 0;
 
-    for (let i = 0; i < 33; i++){
-        indCO2[1][i] = industry[1][i]*indCoalCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        indCO2[2][i] = industry[2][i]*indGasCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        indCO2[3][i] = industry[3][i]*indPetCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        indCO2[4][i] = industry[4][i]*indBioCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        indCO2[5][i] = industry[5][i]*indGeoCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        indCO2[6][i] = industry[6][i]*indHydroCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        indCO2[7][i] = industry[7][i]*indNukeCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        indCO2[8][i] = industry[8][i]*indSolarCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        indCO2[9][i] = industry[9][i]*indWindCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        indCO2[10][i] = industry[10][i]*indOtherCO2;
-    }
-}
-
-export function resCO2(){
-    let resCO2 = new Array(11)
-    for (let i = 0; i < 11; i++){
-        resCO2[i] = new Array(33); 
-    }
-    for (let i = 0; i < 33; i++){
-        reseration[0][i] = 2018+i;
-    }
-
-    let resCoalCO2 = 0;
-    let resGasCO2 = 0;
-    let resPetCO2 = 0;
-    let resBioCO2 = 0;
-    let resGeoCO2 = 0;
-    let resHydroCO2 = 0;
-    let resNukeCO2 = 0;
-    let resSolarCO2 = 0;
-    let resWindCO2 = 0;
+    let resCoalCO2 = 0.53;
+    let resGasCO2 = 0.28;
+    let resPetCO2 = 0.36;
+    let resBioCO2 = .36;
+    let resGeoCO2 = 0.038;
+    let resNukeCO2 = 0.012;
+    let resSolarCO2 = 0.045;
+    let resWindCO2 = 0.011;
     let resOtherCO2 = 0;
 
-    for (let i = 0; i < 33; i++){
-        resCO2[1][i] = rescomm[1][i]*resCoalCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        resCO2[2][i] = rescomm[2][i]*resGasCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        resCO2[3][i] = rescomm[3][i]*resPetCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        resCO2[4][i] = rescomm[4][i]*resBioCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        resCO2[5][i] = rescomm[5][i]*resGeoCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        resCO2[6][i] = rescomm[6][i]*resHydroCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        resCO2[7][i] = rescomm[7][i]*resNukeCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        resCO2[8][i] = rescomm[8][i]*resSolarCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        resCO2[9][i] = rescomm[9][i]*resWindCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        resCO2[10][i] = rescomm[10][i]*resOtherCO2;
-    }
-}
 
-export function transCO2(){
-    let transCO2 = new Array(11)
-    for (let i = 0; i < 11; i++){
-        transCO2[i] = new Array(33); 
-    }
-    for (let i = 0; i < 33; i++){
-        transeration[0][i] = 2018+i;
-    }
-
-    let transCoalCO2 = 0;
-    let transGasCO2 = 0;
-    let transPetCO2 = 0;
-    let transBioCO2 = 0;
-    let transGeoCO2 = 0;
-    let transHydroCO2 = 0;
-    let transNukeCO2 = 0;
-    let transSolarCO2 = 0;
-    let transWindCO2 = 0;
+    let transGasCO2 = .86;
+    let transPetCO2 = 1.17;
+    let transBioCO2 = 1.17;
+    let transNukeCO2 = 0.012;
+    let transSolarCO2 = 0.045;
     let transOtherCO2 = 0;
 
-    for (let i = 0; i < 33; i++){
-        transCO2[1][i] = transportation[1][i]*transCoalCO2;
+
+    let genCO2 = new Array(0);
+    for (let i= 0; i<33; i++){
+        genCO2 = genCO2.concat([{"Year":generation[0][i],"Source":"Coal","Value":generation[1][i]*genCoalCO2},
+                                {"Year":generation[0][i],"Source":"Gas","Value":generation[2][i]*genGasCO2},
+                                {"Year":generation[0][i],"Source":"Nuke","Value":generation[7][i]*genNukeCO2},
+                                {"Year":generation[0][i],"Source":"Hydro","Value":generation[6][i]*genHydroCO2},
+                                {"Year":generation[0][i],"Source":"Solar","Value":generation[8][i]*genSolarCO2},
+                                {"Year":generation[0][i],"Source":"Wind","Value":generation[9][i]*genWindCO2},
+                                {"Year":generation[0][i],"Source":"Pet","Value":generation[3][i]*genPetCO2},
+                                {"Year":generation[0][i],"Source":"Bio","Value":generation[4][i]*genBioCO2},
+                                {"Year":generation[0][i],"Source":"Geo","Value":generation[5][i]*genGeoCO2},
+                                {"Year":generation[0][i],"Source":"Other","Value":generation[10][i]*genOtherCO2}]);
+    };
+
+    let resCO2 = new Array(0);
+    for (let i= 0; i<33; i++){
+        resCO2 = resCO2.concat([{"Year":rescomm[0][i],"Source":"Grid","Value":rescomm[9][i]*0},
+                                {"Year":rescomm[0][i],"Source":"Gas","Value":rescomm[2][i]*resGasCO2},
+                                {"Year":rescomm[0][i],"Source":"Solar","Value":rescomm[7][i]*resSolarCO2},
+                                {"Year":rescomm[0][i],"Source":"Wind","Value":rescomm[8][i]*resWindCO2},
+                                {"Year":rescomm[0][i],"Source":"Pet","Value":rescomm[3][i]*resPetCO2},
+                                {"Year":rescomm[0][i],"Source":"Bio","Value":rescomm[4][i]*resBioCO2},
+                                {"Year":rescomm[0][i],"Source":"Geo","Value":rescomm[5][i]*resGeoCO2},
+                                {"Year":rescomm[0][i],"Source":"Coal","Value":rescomm[1][i]*resCoalCO2},
+                                {"Year":rescomm[0][i],"Source":"Nuke","Value":rescomm[6][i]*resNukeCO2},
+                                {"Year":rescomm[0][i],"Source":"Other","Value":rescomm[10][i]*resOtherCO2}]);
     }
-    for (let i = 0; i < 33; i++){
-        transCO2[2][i] = transportation[2][i]*transGasCO2;
+
+    let indCO2 = new Array(0);
+    for (let i= 0; i<33; i++){
+        indCO2 = indCO2.concat([{"Year":industry[0][i],"Source":"Grid","Value":industry[10][i]*0},
+                                {"Year":industry[0][i],"Source":"Gas","Value":industry[2][i]*indGasCO2},
+                                {"Year":industry[0][i],"Source":"Pet","Value":industry[3][i]*indPetCO2},
+                                {"Year":industry[0][i],"Source":"Solar","Value":industry[8][i]*indSolarCO2},
+                                {"Year":industry[0][i],"Source":"Wind","Value":industry[9][i]*indWindCO2},
+                                {"Year":industry[0][i],"Source":"Bio","Value":industry[4][i]*indBioCO2},
+                                {"Year":industry[0][i],"Source":"Geo","Value":industry[5][i]*indGeoCO2},
+                                {"Year":industry[0][i],"Source":"Coal","Value":industry[1][i]*indCoalCO2},
+                                {"Year":industry[0][i],"Source":"Nuke","Value":industry[7][i]*indNukeCO2},
+                                {"Year":industry[0][i],"Source":"Hydro","Value":industry[6][i]*indHydroCO2},
+                                {"Year":industry[0][i],"Source":"Other","Value":industry[11][i]*indOtherCO2}]);
     }
-    for (let i = 0; i < 33; i++){
-        transCO2[3][i] = transportation[3][i]*transPetCO2;
+
+    let transCO2 = new Array(0);
+    for (let i= 0; i<33; i++){
+        transCO2 = transCO2.concat([{"Year":transportation[0][i],"Source":"Pet","Value":transportation[2][i]*transPetCO2},
+                                    {"Year":transportation[0][i],"Source":"Gas","Value":transportation[1][i]*transGasCO2},
+                                    {"Year":transportation[0][i],"Source":"Grid","Value":transportation[6][i]*0},
+                                    {"Year":transportation[0][i],"Source":"Bio","Value":transportation[3][i]*transBioCO2},
+                                    {"Year":transportation[0][i],"Source":"Solar","Value":transportation[5][i]*transSolarCO2},
+                                    {"Year":transportation[0][i],"Source":"Nuke","Value":transportation[4][i]*transNukeCO2},
+                                    {"Year":transportation[0][i],"Source":"Other","Value":transportation[7][i]*transOtherCO2}]);
     }
-    for (let i = 0; i < 33; i++){
-        transCO2[4][i] = transportation[4][i]*transBioCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        transCO2[5][i] = transportation[5][i]*transGeoCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        transCO2[6][i] = transportation[6][i]*transHydroCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        transCO2[7][i] = transportation[7][i]*transNukeCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        transCO2[8][i] = transportation[8][i]*transSolarCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        transCO2[9][i] = transportation[9][i]*transWindCO2;
-    }
-    for (let i = 0; i < 33; i++){
-        transCO2[10][i] = transportation[10][i]*transOtherCO2;
-    }
+
+    let CO2 = new Array(4);
+    CO2[0]=genCO2;
+    CO2[1]=resCO2;
+    CO2[2]=indCO2;
+    CO2[3]=transCO2;
+    return CO2;
+
 }
