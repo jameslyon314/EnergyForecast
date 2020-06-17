@@ -25,20 +25,20 @@ function fullInitialization() {
     const rcomm = rescomm();
 
     const trans = transportation();
-    
+
     const CO2 = co2(generated, rcomm, ind, trans);
     let genCO2=CO2[0];
     let resCO2=CO2[1];
     let indCO2=CO2[2];
     let transCO2=CO2[3];
     let allCO2=CO2[4];
-
+    let cumuCO2 = CO2[5];
     /* genCO2();
      * indCO2();
      * resCO2();
      * transCO2(); */
-    createCharts(generated, rcomm, ind, trans, genCO2, resCO2, indCO2, transCO2, allCO2);
+    createCharts(generated, rcomm, ind, trans, genCO2, resCO2, indCO2, transCO2, allCO2, cumuCO2);
     UIQOL();
 
-    
+
 }

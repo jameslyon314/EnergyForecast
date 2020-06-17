@@ -1,4 +1,4 @@
-export default function createCharts(generation, rescomm, industry, transportation,genCO2, resCO2, indCO2, transCO2, allCO2) {   
+export default function createCharts(generation, rescomm, industry, transportation,genCO2, resCO2, indCO2, transCO2, allCO2, cumuCO2) {   
     document.getElementById("genArea").innerHTML = ""; 
     document.getElementById("resArea").innerHTML = "";
     document.getElementById("indArea").innerHTML = "";
@@ -9,6 +9,7 @@ export default function createCharts(generation, rescomm, industry, transportati
     document.getElementById("transCO2Area").innerHTML = "";
     document.getElementById("allCO2Area").innerHTML = "";
     document.getElementById("allArea").innerHTML = "";
+    document.getElementById("totality").innerHTML = "";
 
     let resContent = new Array(0);
     for (let i= 0; i<33; i++){
@@ -142,6 +143,7 @@ export default function createCharts(generation, rescomm, industry, transportati
     const margin = {top: 10, right: 30, bottom: 30, left: 50},
           width = 460 - margin.left - margin.right,
           height = 400 - margin.top - margin.bottom;   
+    const radius = 175;
 
     makeChart(resGoal,"#resArea",resContent,resgroups,resgroup,rescolor,yheight );
     makeChart(indGoal,"#indArea",indContent,indgroups,indgroup,indcolor,yheight );
@@ -154,6 +156,8 @@ export default function createCharts(generation, rescomm, industry, transportati
     makeChart({"Year":2018,"Name":"Goal","Value":0},"#indCO2Area",indCO2,indgroups,indgroup,indcolor,co2height );
     makeChart({"Year":2018,"Name":"Goal","Value":0},"#transCO2Area",transCO2,transgroups,transgroup,transcolor,co2height);
     makeChart({"Year":2018,"Name":"Goal","Value":0},"#allCO2Area",allCO2,allgroups,allgroup,allcolor,10000);
+
+    //makePieChart();
 
 
     function makeChart(Goal,svgtarget,content,mygroups,mygroup,color,yheight,title,units){
@@ -253,5 +257,37 @@ export default function createCharts(generation, rescomm, industry, transportati
                   .y(function(d) { return y(d.Value) })
                  )
     }
-}
 
+    /*function makePieChart(){
+
+        let svg = d3.select("#totality")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+
+        let pie = d3.pie()  
+        .value(function(d) {return d.value; })
+
+        let data_ready = pie(d3.entries(cumuCO2))
+
+        svg
+            .selectAll('slices')
+            .data(data_ready)
+            .enter()
+            .append('path')
+            .attr('d', d3.arc()
+                  .innerRadius(0)
+                  .outerRadius(radius)
+                 )
+            .attr('fill', function(d){ return(allcolor(d.data.key+1)) })
+            .attr("stroke", "black")
+            .style("stroke-width", "2px")
+            .style("opacity", 0.7)
+    }*/
+
+
+
+}
