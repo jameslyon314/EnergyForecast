@@ -1,5 +1,16 @@
 export default function genCO2(generation, rescomm, industry, transportation){
 
+    let CCS = document.getElementById("CCS_var").checked;
+    let CCSYear = document.getElementById("CCSYear_var").value;
+    let CCSFactor=1;
+    let CCSIndFactor = 1;
+    if (!CCS){
+        CCSFactor=1;
+    }
+    else{
+        CCSFactor=0.2;
+        CCSIndFactor=0.6;
+    }
 
     let genCoalCO2 = 1150/1146;
     let genGasCO2 = 581/1063.6;
@@ -44,16 +55,30 @@ export default function genCO2(generation, rescomm, industry, transportation){
 
     let genCO2 = new Array(0);
     for (let i= 0; i<33; i++){
-        genCO2 = genCO2.concat([{"Year":generation[0][i],"Source":"Coal","Value":generation[1][i]*genCoalCO2},
-                                {"Year":generation[0][i],"Source":"Gas","Value":generation[2][i]*genGasCO2},
-                                {"Year":generation[0][i],"Source":"Nuke","Value":generation[7][i]*genNukeCO2},
-                                {"Year":generation[0][i],"Source":"Hydro","Value":generation[6][i]*genHydroCO2},
-                                {"Year":generation[0][i],"Source":"Solar","Value":generation[8][i]*genSolarCO2},
-                                {"Year":generation[0][i],"Source":"Wind","Value":generation[9][i]*genWindCO2},
-                                {"Year":generation[0][i],"Source":"Pet","Value":generation[3][i]*genPetCO2},
-                                {"Year":generation[0][i],"Source":"Bio","Value":generation[4][i]*genBioCO2},
-                                {"Year":generation[0][i],"Source":"Geo","Value":generation[5][i]*genGeoCO2},
-                                {"Year":generation[0][i],"Source":"Other","Value":generation[10][i]*genOtherCO2}]);
+        if(generation[0][i] >= CCSYear && CCS){
+            genCO2 = genCO2.concat([{"Year":generation[0][i],"Source":"Coal","Value":generation[1][i]*genCoalCO2*CCSFactor},
+                                    {"Year":generation[0][i],"Source":"Gas","Value":generation[2][i]*genGasCO2*CCSFactor},
+                                    {"Year":generation[0][i],"Source":"Nuke","Value":generation[7][i]*genNukeCO2},
+                                    {"Year":generation[0][i],"Source":"Hydro","Value":generation[6][i]*genHydroCO2},
+                                    {"Year":generation[0][i],"Source":"Solar","Value":generation[8][i]*genSolarCO2},
+                                    {"Year":generation[0][i],"Source":"Wind","Value":generation[9][i]*genWindCO2},
+                                    {"Year":generation[0][i],"Source":"Pet","Value":generation[3][i]*genPetCO2*CCSFactor},
+                                    {"Year":generation[0][i],"Source":"Bio","Value":generation[4][i]*genBioCO2*CCSFactor},
+                                    {"Year":generation[0][i],"Source":"Geo","Value":generation[5][i]*genGeoCO2*CCSFactor},
+                                    {"Year":generation[0][i],"Source":"Other","Value":generation[10][i]*genOtherCO2}]);
+        }
+        else{
+            genCO2 = genCO2.concat([{"Year":generation[0][i],"Source":"Coal","Value":generation[1][i]*genCoalCO2},
+                                    {"Year":generation[0][i],"Source":"Gas","Value":generation[2][i]*genGasCO2},
+                                    {"Year":generation[0][i],"Source":"Nuke","Value":generation[7][i]*genNukeCO2},
+                                    {"Year":generation[0][i],"Source":"Hydro","Value":generation[6][i]*genHydroCO2},
+                                    {"Year":generation[0][i],"Source":"Solar","Value":generation[8][i]*genSolarCO2},
+                                    {"Year":generation[0][i],"Source":"Wind","Value":generation[9][i]*genWindCO2},
+                                    {"Year":generation[0][i],"Source":"Pet","Value":generation[3][i]*genPetCO2},
+                                    {"Year":generation[0][i],"Source":"Bio","Value":generation[4][i]*genBioCO2},
+                                    {"Year":generation[0][i],"Source":"Geo","Value":generation[5][i]*genGeoCO2},
+                                    {"Year":generation[0][i],"Source":"Other","Value":generation[10][i]*genOtherCO2}]);
+        }
     };
 
     let resCO2 = new Array(0);
@@ -72,17 +97,32 @@ export default function genCO2(generation, rescomm, industry, transportation){
 
     let indCO2 = new Array(0);
     for (let i= 0; i<33; i++){
-        indCO2 = indCO2.concat([{"Year":industry[0][i],"Source":"Grid","Value":industry[10][i]*0},
-                                {"Year":industry[0][i],"Source":"Gas","Value":industry[2][i]*indGasCO2},
-                                {"Year":industry[0][i],"Source":"Pet","Value":industry[3][i]*indPetCO2},
-                                {"Year":industry[0][i],"Source":"Solar","Value":industry[8][i]*indSolarCO2},
-                                {"Year":industry[0][i],"Source":"Wind","Value":industry[9][i]*indWindCO2},
-                                {"Year":industry[0][i],"Source":"Bio","Value":industry[4][i]*indBioCO2},
-                                {"Year":industry[0][i],"Source":"Geo","Value":industry[5][i]*indGeoCO2},
-                                {"Year":industry[0][i],"Source":"Coal","Value":industry[1][i]*indCoalCO2},
-                                {"Year":industry[0][i],"Source":"Nuke","Value":industry[7][i]*indNukeCO2},
-                                {"Year":industry[0][i],"Source":"Hydro","Value":industry[6][i]*indHydroCO2},
-                                {"Year":industry[0][i],"Source":"Other","Value":industry[11][i]*indOtherCO2}]);
+        if(industry[0][i] >= CCSYear && CCS){
+            indCO2 = indCO2.concat([{"Year":industry[0][i],"Source":"Grid","Value":industry[10][i]*0},
+                                    {"Year":industry[0][i],"Source":"Gas","Value":industry[2][i]*indGasCO2*CCSIndFactor},
+                                    {"Year":industry[0][i],"Source":"Pet","Value":industry[3][i]*indPetCO2*CCSIndFactor},
+                                    {"Year":industry[0][i],"Source":"Solar","Value":industry[8][i]*indSolarCO2},
+                                    {"Year":industry[0][i],"Source":"Wind","Value":industry[9][i]*indWindCO2},
+                                    {"Year":industry[0][i],"Source":"Bio","Value":industry[4][i]*indBioCO2*CCSIndFactor},
+                                    {"Year":industry[0][i],"Source":"Geo","Value":industry[5][i]*indGeoCO2*CCSIndFactor},
+                                    {"Year":industry[0][i],"Source":"Coal","Value":industry[1][i]*indCoalCO2*CCSIndFactor},
+                                    {"Year":industry[0][i],"Source":"Nuke","Value":industry[7][i]*indNukeCO2},
+                                    {"Year":industry[0][i],"Source":"Hydro","Value":industry[6][i]*indHydroCO2},
+                                    {"Year":industry[0][i],"Source":"Other","Value":industry[11][i]*indOtherCO2}]);
+        }
+        else{
+                        indCO2 = indCO2.concat([{"Year":industry[0][i],"Source":"Grid","Value":industry[10][i]*0},
+                                    {"Year":industry[0][i],"Source":"Gas","Value":industry[2][i]*indGasCO2},
+                                    {"Year":industry[0][i],"Source":"Pet","Value":industry[3][i]*indPetCO2},
+                                    {"Year":industry[0][i],"Source":"Solar","Value":industry[8][i]*indSolarCO2},
+                                    {"Year":industry[0][i],"Source":"Wind","Value":industry[9][i]*indWindCO2},
+                                    {"Year":industry[0][i],"Source":"Bio","Value":industry[4][i]*indBioCO2},
+                                    {"Year":industry[0][i],"Source":"Geo","Value":industry[5][i]*indGeoCO2},
+                                    {"Year":industry[0][i],"Source":"Coal","Value":industry[1][i]*indCoalCO2},
+                                    {"Year":industry[0][i],"Source":"Nuke","Value":industry[7][i]*indNukeCO2},
+                                    {"Year":industry[0][i],"Source":"Hydro","Value":industry[6][i]*indHydroCO2},
+                                    {"Year":industry[0][i],"Source":"Other","Value":industry[11][i]*indOtherCO2}]);
+        }
     }
 
     let transCO2 = new Array(0);
@@ -231,13 +271,30 @@ export default function genCO2(generation, rescomm, industry, transportation){
         ]
     }
 
-let CO2 = new Array(5);
-CO2[0]=genCO2;
-CO2[1]=resCO2;
-CO2[2]=indCO2;
-CO2[3]=transCO2;
-CO2[4] = allCO2;
-CO2[5] = cumuCO2;
-return CO2;
+    let CO2 = new Array(5);
+    CO2[0]=genCO2;
+    CO2[1]=resCO2;
+    CO2[2]=indCO2;
+    CO2[3]=transCO2;
+    CO2[4] = allCO2;
+    CO2[5] = cumuCO2;
+
+    let totalMass = (cumuCO2.Coal + cumuCO2.NaturalGas + cumuCO2.Petroleum + cumuCO2.Nuclear + cumuCO2.Solar + cumuCO2.Biomass + cumuCO2.Wind + cumuCO2.Hydropower + cumuCO2.Geothermal + cumuCO2.Other).toFixed(0);
+    let initialMass = 0;
+    let finalMass = 0;
+    for (let i=0; i<10; i++){
+        initialMass = initialMass + allCO2[i].Value;
+        finalMass = finalMass + allCO2[320+i].Value;
+    }
+
+    document.getElementById("TotalCO2").innerHTML = "Cumulative CO2 emissions: " + totalMass + " MMmT"; 
+    document.getElementById("Reduction").innerHTML = "2050 CO2 Emissions are " + (100-finalMass/initialMass*100).toFixed(1) + " percent lower than 2018"; 
+    document.getElementById("Petrol").innerHTML = "Petroleum: " + (cumuCO2.Petroleum).toFixed(0) + "("+ (100*cumuCO2.Petroleum / totalMass).toFixed(1) +" % of total)";
+    document.getElementById("Coal").innerHTML = "Coal: " + (cumuCO2.Coal).toFixed(0) + "("+ (100*cumuCO2.Coal / totalMass).toFixed(1) +" % of total)";
+    document.getElementById("NaturalGas").innerHTML = "Natural Gas: " + (cumuCO2.NaturalGas).toFixed(0) + "("+ (100*cumuCO2.NaturalGas / totalMass).toFixed(1) +" % of total)";
+    document.getElementById("Biomass").innerHTML = "Biomass: " + (cumuCO2.Biomass).toFixed(0) + "("+ (100*cumuCO2.Biomass / totalMass).toFixed(1) +" % of total)";
+
+
+    return CO2;
 
 }

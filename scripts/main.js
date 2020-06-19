@@ -1,10 +1,11 @@
-import generation from './generators.js';
+import generation from './generation.js';
 import industry from './industry.js';
 import rescomm from './rescomm.js';
 import transportation from './transport.js';
 import createCharts from './charts.js';
 import UIQOL from './UIQOL.js';
 import co2 from './co2.js';
+import makeChart from './makeCharts.js';
 
 function init() {
     window.fullInitialization = fullInitialization;
@@ -12,12 +13,12 @@ function init() {
     window.rescomm = rescomm;
     window.transportation = transportation;
 
-    fullInitialization();
+    fullInitialization("all");
 }
 
 init();
 
-function fullInitialization() {
+function fullInitialization(co2target) {
     const generated = generation();
 
     const ind = industry();
@@ -37,8 +38,7 @@ function fullInitialization() {
      * indCO2();
      * resCO2();
      * transCO2(); */
-    createCharts(generated, rcomm, ind, trans, genCO2, resCO2, indCO2, transCO2, allCO2, cumuCO2);
+    createCharts(generated, rcomm, ind, trans, genCO2, resCO2, indCO2, transCO2, allCO2, cumuCO2, co2target);
     UIQOL();
-
-
 }
+
