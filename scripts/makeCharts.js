@@ -45,8 +45,7 @@ export default function makeChart(Goal,svgtarget,content,mygroups,mygroup,color,
     })
     (sumstat)
 
-    svg
-        .selectAll("layers")
+    svg.selectAll("layers")
         .data(stackedData)
         .enter()
         .append("path")
@@ -56,6 +55,11 @@ export default function makeChart(Goal,svgtarget,content,mygroups,mygroup,color,
               .y0(function(d) { return y(d[0]); })
               .y1(function(d) { return y(d[1]); })
              )
+        .on('mouseover', function(d,i){
+        d3.select(this).transition()
+            .duration('50')
+            .attr('opacity','0.8')
+    })
 
     svg.append("g").selectAll("text")
         .data(Goal)
@@ -103,4 +107,5 @@ export default function makeChart(Goal,svgtarget,content,mygroups,mygroup,color,
               .x(function(d) { return x(d.Year) })
               .y(function(d) { return y(d.Value) })
              )
+
 }

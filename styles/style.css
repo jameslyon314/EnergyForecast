@@ -43,7 +43,7 @@ body {
 
 .yearslider {
     -webkit-appearance: none;
-    width: 40%;
+    width: 45%;
     height: 10px;
     background: #d3d3d3;
     outline: none;
@@ -71,28 +71,14 @@ body {
     background: #4CAF50;
     cursor: pointer;
 }
-
-table, th, td {
-    border: 1px transparent white;
-    border-collapse: collapse;
-    vertical-align: top;
-}
-td {
-    padding: 1px;
-    text-align: left;    
-}
-th{  
-    padding: 1px;
-    text-align: left; 
-    font: 12px sans-serif;
-    font-weight: bold;
-}
 .tooltip {
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black;
-}
+    margin: 3px 5px 3px 0px;
+    font-size: 14px;
 
+}
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
@@ -126,7 +112,6 @@ th{
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
-
     /* Position the tooltip */
     position: absolute;
     z-index: 2;
@@ -151,20 +136,122 @@ th{
 
 .valuerangewrap {
     position: relative;
+    margin: 5px 0px 9px 0px;
+
 }
 .methodrangewrap {
     position: relative;
+    margin: 5px 0px 9px 0px;
+
 }
 .yearrangewrap {
     position: relative;
+    margin: 5px 0px 9px 0px;
+    font-size: 10px;
+    order: 
 }
 .checkbox{
     margin: 0px;
+    width:10px;
+    height:10px;
 }
 .sourceTitle{
+    text-align: center;
+    padding-right: 5px;
+    font-weight: bold;
+    font-size:14px;
+    margin:0px;
+}
+.sourceTitleR{
     text-align: right;
-    padding-right: 10px;
+    padding-right: 5px;
+    font-weight: bold;
+    font-size:14px;
+    margin:0px;
+}
+.sourceTitleL{
+    text-align: left;
+    padding-right: 5px;
+    font-weight: bold;
+    font-size:14px;
+    margin:0px;
 }
 .sectorColumn{
     border-right: 2px solid black;
 }
+
+.row {
+    display: flex;
+    zoom: 90%;
+    padding-bottom: 5%;
+}
+
+.column {
+    flex: 40%;
+    padding: 1.5rem;
+    transition: 0.2s;
+    border-radius: 16px;
+    background-color: lightcyan;
+    box-shadow: -.5rem 0 1rem #000;
+}
+.column:hover {
+    transform: translateY(-1rem);
+    position: relative;
+}
+
+.column:hover~.column{
+    transform: translateX(32%);
+    position: relative;
+}
+.column:not(:first-child) {
+    margin-left: -10%;
+    position: relative;
+}
+.UIcolumn1 {
+    width: 100px;
+    text-align:right;
+    position: relative;
+}
+.UIcolumn2 {
+    width: 140px;
+    text-align:center;
+    position: relative;
+}
+.UIcolumn3 {
+    width: 100px;
+    text-align:center;
+    position: relative;
+}
+.UIcolumn4 {
+    width: 150px;
+    text-align:left;
+    position: relative;
+}
+.graphArea{
+    width:100%;
+    text-align:center;
+}
+.scroller{
+    overflow:hidden;
+    border-style:solid;
+    background-color:#F9FFF9;
+    border-radius:100px;
+    zoom:0.9;
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;    
+}
+.subtitle{
+    font-size:18px;
+    text-align:center;
+    margin-top:0px;
+    margin-bottom: 0px;
+}
+.mainTitle{
+    font-size:22px;
+    text-align:center;
+    text-decoration:underline;
+    margin-bottom:0px;
+    margin-top:0px;
+}
+

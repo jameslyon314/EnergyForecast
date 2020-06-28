@@ -1,56 +1,56 @@
 export default function UIQOL(){
 
-const allValueRanges = document.querySelectorAll(".valuerangewrap");
-const allMethodRanges = document.querySelectorAll(".methodrangewrap");
-const allYearRanges = document.querySelectorAll(".yearrangewrap");
+    const allValueRanges = document.querySelectorAll(".valuerangewrap");
+    const allMethodRanges = document.querySelectorAll(".methodrangewrap");
+    const allYearRanges = document.querySelectorAll(".yearrangewrap");
 
-allValueRanges.forEach(wrap => {
-    const range = wrap.querySelector(".slider");
-    const bubble = wrap.querySelector(".bubble");
-    range.addEventListener("input", () => {
+    allValueRanges.forEach(wrap => {
+        const range = wrap.querySelector(".slider");
+        const bubble = wrap.querySelector(".bubble");
+        range.addEventListener("input", () => {
+            setBubble(range, bubble);
+        });
+        range.addEventListener("mousedown", () => {
+            bubbleVision(bubble);
+        });
+        range.addEventListener("mouseup", () => {
+            bubbleInvision(bubble);
+        });
         setBubble(range, bubble);
-    });
-    range.addEventListener("mousedown", () => {
-        bubbleVision(bubble);
-    });
-    range.addEventListener("mouseup", () => {
-        bubbleInvision(bubble);
-    });
-    setBubble(range, bubble);
 
-});
+    });
 
-allMethodRanges.forEach(wrap => {
-    const range = wrap.querySelector(".slider");
-    const bubble = wrap.querySelector(".bubble");
-    range.addEventListener("input", () => {
+    allMethodRanges.forEach(wrap => {
+        const range = wrap.querySelector(".slider");
+        const bubble = wrap.querySelector(".bubble");
+        range.addEventListener("input", () => {
+            setRangeBubble(range, bubble);
+        });
+        range.addEventListener("mousedown", () => {
+            bubbleVision(bubble);
+        });
+        range.addEventListener("mouseup", () => {
+            bubbleInvision(bubble);
+        });
         setRangeBubble(range, bubble);
-    });
-    range.addEventListener("mousedown", () => {
-        bubbleVision(bubble);
-    });
-    range.addEventListener("mouseup", () => {
-        bubbleInvision(bubble);
-    });
-    setRangeBubble(range, bubble);
 
-});
+    });
 
-allYearRanges.forEach(wrap => {
-    const range = wrap.querySelector(".yearslider");
-    const bubble = wrap.querySelector(".bubble");
-    range.addEventListener("input", () => {
+    allYearRanges.forEach(wrap => {
+        const range = wrap.querySelector(".yearslider");
+        const bubble = wrap.querySelector(".bubble");
+        range.addEventListener("input", () => {
+            setYearBubble(range, bubble);
+        });
+        range.addEventListener("mousedown", () => {
+            bubbleVision(bubble);
+        });
+        range.addEventListener("mouseup", () => {
+            bubbleInvision(bubble);
+        });
         setYearBubble(range, bubble);
-    });
-    range.addEventListener("mousedown", () => {
-        bubbleVision(bubble);
-    });
-    range.addEventListener("mouseup", () => {
-        bubbleInvision(bubble);
-    });
-    setYearBubble(range, bubble);
 
-});
+    });
 }
 
 function bubbleVision(bubble){

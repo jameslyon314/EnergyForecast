@@ -121,11 +121,28 @@ export default function createCharts(generation, rescomm, industry, transportati
                                        {"Year":generation[0][i],"Source":"Geo","Value":generation[5][i]+rescomm[5][i]+industry[5][i]},
                                        {"Year":generation[0][i],"Source":"Other","Value":generation[10][i]+rescomm[10][i]+industry[11][i]+transportation[7][i]});
     };
+
     const allgroups = ["Coal", "Natural Gas","Petroleum", "Nuclear","Solar","Wind", "Hydropower","Biomass", "Geothermal", "Other"] // list of group names
     const allgroup = [1,2,3,4,5,6,7,8,9,10] // list of group names
     const allcolor = d3.scaleOrdinal()
     .domain(allgroups)
     .range(['#2A2A2A','#FF8B00','#DD0000','#AF00FF','#FFF300','#49EDFF','#007EFF','#207900','#6B5A00','#AFACAC']);
+
+
+    let cumuPower = {"Coal":0,"NaturalGas":0,"Petroleum":0,"Nuclear":0,"Solar":0,"Wind":0,"Hydropower":0,"Biomass":0,"Geothermal":0,"Other":0,}
+    for(let j=0; j<33; j++){
+        cumuPower.Coal = cumuPower.Coal + allContent[10*j+0].Value;
+        cumuPower.NaturalGas = cumuPower.NaturalGas + allContent[10*j+1].Value;
+        cumuPower.Petroleum = cumuPower.Petroleum + allContent[10*j+2].Value;
+        cumuPower.Nuclear = cumuPower.Nuclear + allContent[10*j+3].Value;
+        cumuPower.Solar = cumuPower.Solar + allContent[10*j+4].Value;
+        cumuPower.Wind = cumuPower.Wind + allContent[10*j+5].Value;
+        cumuPower.Hydropower = cumuPower.Hydropower + allContent[10*j+6].Value;
+        cumuPower.Biomass = cumuPower.Biomass + allContent[10*j+7].Value;
+        cumuPower.Geothermal = cumuPower.Geothermal + allContent[10*j+8].Value;
+        cumuPower.Other = cumuPower.Other + allContent[10*j+9].Value;    
+    }
+
 
 
 
@@ -141,6 +158,7 @@ export default function createCharts(generation, rescomm, industry, transportati
     makeCharts({"Year":2018,"Name":"Goal","Value":0},"#allArea",allContent,allgroups,allgroup,allcolor,20000);
 
     makePieChart();
+    makePowerPieChart();
 
     switch(co2target){
         case "gen":
@@ -161,14 +179,14 @@ export default function createCharts(generation, rescomm, industry, transportati
         default:
             makeCharts({"Year":2018,"Name":"Goal","Value":0},"#allCO2Area",allCO2,allgroups,allgroup,allcolor,10000);
             break;
-            
+
     }
 
     //makePieChart();
     function makePieChart(){
 
         document.getElementById("pieCO2").innerHTML = ""; 
-        
+
         const margin = {top: 10, right: 50, bottom: 30, left: 50},
               width = 460 - margin.left - margin.right,
               height = 400 - margin.top - margin.bottom;  
@@ -190,6 +208,73 @@ export default function createCharts(generation, rescomm, industry, transportati
         .value(function(d) {return d.value; })
 
         let data_ready = pie(d3.entries(cumuCO2))
+
+        svg
+            .selectAll('slices')
+            .data(data_ready)
+            .enter()
+            .append('path')
+            .attr('d', d3.arc()
+                  .innerRadius(0)
+                  .outerRadius(radius)
+                 )
+            .attr('fill', function(d){ return(allcolor(d.data.key+1)) })
+            .attr("stroke", "black")
+            .style("stroke-width", "1px")
+            .style("opacity", 1.0)
+
+        /*svg
+            .selectAll('slices')
+            .data(data_ready)
+            .enter()
+            .on("mouseover", function(d) {		
+            div.transition()		
+                .duration(200)		
+                .style("opacity", .5)	
+            div.html("<p>hello there</p>")
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px")
+        })
+            .on("mouseout", function(d) {		
+            div.transition()		
+                .duration(500)		
+                .style("opacity", 0)})  ;
+
+
+
+        /*.append('text')
+                .text(function(d){ return d.data.key})
+                .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+                .style("text-anchor", "middle")
+                .style("font-size", 17)})*/
+
+    }
+
+    function makePowerPieChart(){
+
+        document.getElementById("cumuPower").innerHTML = ""; 
+
+        const margin = {top: 10, right: 50, bottom: 30, left: 50},
+              width = 460 - margin.left - margin.right,
+              height = 400 - margin.top - margin.bottom;  
+        const radius = 175; 
+
+        let arcGenerator = d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius)
+
+        let svg = d3.select("#cumuPower")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+
+        let pie = d3.pie()  
+        .value(function(d) {return d.value; })
+
+        let data_ready = pie(d3.entries(cumuPower))
 
         svg
             .selectAll('slices')
